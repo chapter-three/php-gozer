@@ -31,8 +31,8 @@ abstract class CoreController extends Core
 			$this->initTwig();
 		}
 		
-		$this->get = $this->scrubValues($_GET);
-		$this->post = $this->scrubValues($_POST);
+		$this->get = $this->sanitizeValues($_GET);
+		$this->post = $this->sanitizeValues($_POST);
 	}
 
 	/**
@@ -56,7 +56,7 @@ abstract class CoreController extends Core
 	 * @param $values array An array of key/value pairs.
 	 * @return array
 	 */
-	protected function scrubValues($values) {
+	protected function sanitizeValues($values) {
 		$safeValues = array();
 		foreach ($values as $key => $value) {
 			// TODO: Sanitize the value (not sure if this is really needed since sanitizing is really context sensitive)

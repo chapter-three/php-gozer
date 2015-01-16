@@ -6,7 +6,7 @@
  * 
  * Sample Doctrine Entity
  */
-class MessageEntity
+class Message
 {
 	/** 
 	 * @Id 

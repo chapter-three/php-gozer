@@ -1,6 +1,7 @@
 <?php
 
 require_once('CoreController.php');
+require_once('Message.php');
 
 /**
  * Class HomePage
@@ -15,7 +16,12 @@ class HomePage extends CoreController
 	public function defaultAction() {
 		$this->templateVars['title'] = 'PHP Gozer';
 		
+		// Create a new message and save to db
+		$message = new Message();
+		$message->setText('blah');
 		$em = $this->getEntityManager();
+		$em->persist($message);
+		//$em->flush();
 		
 		$html = $this->twig->render($this->template, $this->templateVars);
 		echo $html;
