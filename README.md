@@ -25,7 +25,7 @@ Routes are defined in application/config/routes.json using the following paramet
   - The view (Twig template) to use if one is needed.
 
 #### Controllers
-Controllers classes are kept in application/controllers and must extend the CoreController class. The file containing the controller class must be named the same as the class in order for the routing mechanism to find it. If a view is associated with the controller, Twig will be available through `$this->twig`. The Doctrine EntityManager is available through `$this->getEntityManager()`. Note: Doctrine is lazy loaded so is not loaded or initialized in the controller until `$this->getEntityManager()` is called.
+Controllers classes are kept in application/controllers and must extend the CoreController class. The file containing the controller class must be named the same as the class in order for the routing mechanism to find it. If a view is associated with the controller, Twig will be available through `$this->twig`. The Doctrine EntityManager is available through `$this->getEntityManager()`. Note: Doctrine is lazy loaded so is not loaded or initialized in the controller until `$this->getEntityManager()` is called. Whenever you add a new controller you will need to do a `#php composer.phar update` to update the autoloader files.
 
 #### Views
 Views are html files in application/views. The Twig templating engine is included with this framework by defailt via composer and available in controllers (that extend CoreController) via `$this->twig`.
@@ -34,7 +34,7 @@ Views are html files in application/views. The Twig templating engine is include
 Api or webservice controllers are also kept in application/controllers and must extend the CoreAPI class. The file containing the api controller class must be named the same as the class in order for the routing mechanism to find it.
 
 #### Models
-Doctrine ORM is used for database access. Entities are stored in application/models by default. See the Doctrine documentation for a list of supported databases and usage. Controllers extending CoreController can access the EntityManager via `$this->getEntityManager()`.
+Doctrine ORM is used for database access. Entities are stored in application/models by default. See the Doctrine documentation for a list of supported databases and usage. Controllers extending CoreController can access the EntityManager via `$this->getEntityManager()`. Whenever you add a new model you will need to do a `#php composer.phar update` to update the autoloader files.
 
 #### See Also
 - Composer: https://getcomposer.org/doc/
