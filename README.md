@@ -1,7 +1,7 @@
 # php-gozer
 <h2>A simple PHP framework for web sites and services.</h2>
 
-By default it includes Doctrine ORM and Twig.
+By default it includes Doctrine ORM and Twig plus a custom router.
 
 <h3>Instalation</h3>
 
