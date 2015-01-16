@@ -3,17 +3,17 @@
 
 By default it includes Doctrine ORM and Twig plus a custom router.
 
-#### Instalation
+### Instalation
 1. Download zip and extract to your document root.
 2. run `#php composer.phar install` or `#php composer.phar update`
 
-#### Configuration
+### Configuration
 Edit application/config/config.php as needed. Should be pretty self-explanitory.
 
-#### Usage
-Routes are defined in application/config/routes.php.
+### Usage
 
-Parameters:
+#### Routing
+Routes are defined in application/config/routes.json using the following parameters:
 - *url* (required)
   - A single slash (/) is the default for hostname.com/. Use any number of parameters in the url with %1/%2 etc. Note that for now parameters must be the last components of the URL (/admin/%1/users wont work).
 - *controller* (required)
