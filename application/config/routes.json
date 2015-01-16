@@ -1,0 +1,21 @@
+[
+  {
+	"url": 			"/",
+	"controller": 	"HomePage",
+	"view": 		"home.html"
+  },
+  {
+	"url": 			"/admin",
+	"controller": 	"HomePage",
+	"action": 		"adminAction"
+  },
+  {
+	"url": 			"/api",
+	"controller": 	"API"
+  },
+  {
+	"url": 			"/api/test",
+	"controller": 	"API",
+	"action":		"testAction"
+  }
+]
