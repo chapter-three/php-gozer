@@ -9,7 +9,9 @@ By default it includes Doctrine ORM and Twig.
 2) run #php composer.phar install or #php composer.phar update
 
 <b>Configuration</b>
+
 TODO
 
 <b>Usage</b>
+
 TODO
