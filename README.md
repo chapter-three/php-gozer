@@ -1,17 +1,17 @@
 # php-gozer
-A simple PHP framework for web sites and services.
+<h2>A simple PHP framework for web sites and services.</h2>
 
 By default it includes Doctrine ORM and Twig.
 
-<b>Instalation</b>
+<h3>Instalation</h3>
 
 1) Download zip and extract to your document root.
 2) run #php composer.phar install or #php composer.phar update
 
-<b>Configuration</b>
+<h3>Configuration</h3>
 
 TODO
 
-<b>Usage</b>
+<h3>Usage</h3>
 
 TODO
