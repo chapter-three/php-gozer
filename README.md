@@ -1,7 +1,7 @@
 # php-gozer
 ## A simple PHP framework for web sites and web services.
 
-This is designed to be a very simple framework to quickly get a web site or service up and running with as little complexity and overhead as possible while still containing common and often used functionality. By default it includes Composer, Doctrine ORM and Twig plus a custom router. Additional specific functionality can be quickly added via composer.
+This is designed to be a very simple framework to quickly get a web site or service up and running with as little complexity and overhead as possible while still containing common and often used functionality. By default it includes Composer, Doctrine ORM and Twig plus a custom router. The framework can be easily extended for specific needs using Composer.
 
 ### Instalation
 1. Download zip and extract to your document root.
