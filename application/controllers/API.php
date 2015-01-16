@@ -1,7 +1,5 @@
 <?php
 
-require_once('CoreAPI.php');
-
 /**
  * Class API
  * 

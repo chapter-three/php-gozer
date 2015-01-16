@@ -1,8 +1,5 @@
 <?php
 
-require_once('CoreController.php');
-require_once('Message.php');
-
 /**
  * Class HomePage
  * 
@@ -23,8 +20,7 @@ class HomePage extends CoreController
 		$em->persist($message);
 		//$em->flush();
 		
-		$html = $this->twig->render($this->template, $this->templateVars);
-		echo $html;
+		echo $this->twig->render($this->template, $this->templateVars);
 	}
 
 	/**

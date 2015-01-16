@@ -6,7 +6,6 @@
  */
 
 require_once('../../vendor/autoload.php');
-require_once('../config/config.php');
 
 // *** Parse the request URL and load the appropriate page ***
 if (is_file(ROUTES_FILE)) {
@@ -55,7 +54,6 @@ if (is_file(ROUTES_FILE)) {
 				if (!is_file(BASE_PATH . '/application/controllers/' . $page['controller'] . '.php')) {
 					die("Controller '" . BASE_PATH . "/application/controllers/{$page['controller']} for page '{$page->url}' could not be found.");
 				}
-				require_once($page['controller'] . '.php');
 				
 				$className = '';
 				if (strstr($page['controller'], '/')) {

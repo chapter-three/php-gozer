@@ -1,7 +1,5 @@
 <?php
 
-require_once('Core.php');
-
 /**
  * Base class for all display controllers.
  * 

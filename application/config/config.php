@@ -17,4 +17,4 @@ define('DOCTRINE_DB_USER', 'root');
 define('DOCTRINE_DB_PASSWORD', 'mysqlr00t');
 
 // Setup include paths
-require_once('includes.php');
+//require_once('includes.php');

@@ -1,4 +1,14 @@
 {
+    "autoload": {
+        "classmap": [
+            "application/core",
+            "application/models",
+            "application/controllers"
+        ],
+        "files": [
+            "application/config/config.php"
+        ]
+    },
     "require": {
         "twig/twig": "~1.0",
         "doctrine/orm": "2.*"
