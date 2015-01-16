@@ -1,6 +1,6 @@
 <?php
 
-namespace Gozer;
+namespace Gozer\Core;
 
 use Doctrine\ORM\Tools\Setup;
 use Doctrine\ORM\EntityManager;

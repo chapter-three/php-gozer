@@ -1,5 +1,7 @@
 <?php
 
+use Gozer\Core\CoreAPI;
+
 /**
  * Class API
  * 

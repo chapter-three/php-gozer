@@ -1,9 +1,12 @@
 {
     "autoload": {
+        "psr-4": {
+            "Gozer\\Core\\": "system/src"
+        },
         "classmap": [
-            "application/core",
             "application/models",
-            "application/controllers"
+            "application/controllers",
+            "application/lib"
         ],
         "files": [
             "application/config/config.php"

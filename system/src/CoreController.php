@@ -1,6 +1,9 @@
 <?php
 
-namespace Gozer;
+namespace Gozer\Core;
+
+use \Twig_Loader_Filesystem;
+use \Twig_Environment;
 
 /**
  * Base class for all display controllers.

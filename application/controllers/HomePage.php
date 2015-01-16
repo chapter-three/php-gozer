@@ -1,5 +1,7 @@
 <?php
 
+use \Gozer\Core\CoreController;
+
 /**
  * Class HomePage
  * 
@@ -12,6 +14,8 @@ class HomePage extends CoreController
 	 */
 	public function defaultAction() {
 		$this->templateVars['title'] = 'PHP Gozer';
+		
+		$util = new Util();
 		
 		// Create a new message and save to db
 		$message = new Message();
