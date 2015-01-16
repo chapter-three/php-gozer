@@ -23,7 +23,7 @@ Routes are defined in application/config/routes.json using the following paramet
 - *view* (optional)
   - The view (Twig template) to use if one is needed.
 
-#### View Controllers
+#### Controllers
 Controllers classes are kept in application/controllers and must extend the CoreController class. The file containing the controller class must be named the same as the class in order for the routing mechanism to find it. If a view is associated with the controller, Twig will be available through `$this->twig`. The Doctrine EntityManager is available through `$this->getEntityManager()`. Note: Doctrine is lazy loaded so is not loaded or initialized in the controller until `$this->getEntityManager()` is called.
 
 #### Views
