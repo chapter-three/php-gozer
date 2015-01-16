@@ -33,7 +33,7 @@ Views are html files in application/views. The Twig templating engine is include
 Api or webservice controllers are also kept in application/controllers and must extend the CoreAPI class. The file containing the api controller class must be named the same as the class in order for the routing mechanism to find it.
 
 #### Models
-Doctrine ORM is used for database access. Entities are stored in application/models by default. See the Doctrine documentation for a list of supported databases and usage. Controllers extending CoreController can access the EntityManager `via $this->getEntityManager()`.
+Doctrine ORM is used for database access. Entities are stored in application/models by default. See the Doctrine documentation for a list of supported databases and usage. Controllers extending CoreController can access the EntityManager via `$this->getEntityManager()`.
 
 #### See Also
 - Composer: https://getcomposer.org/doc/
