@@ -1,5 +1,7 @@
 <?php
 
+namespace Gozer;
+
 /**
  * Base class for all api controllers.
  * 

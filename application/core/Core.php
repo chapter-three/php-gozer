@@ -1,12 +1,14 @@
 <?php
 
+namespace Gozer;
+
 use Doctrine\ORM\Tools\Setup;
 use Doctrine\ORM\EntityManager;
 
 /**
  * Class Core
  */
-abstract class Core 
+abstract class Core
 {
 	private $entityManager;
 
