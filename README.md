@@ -23,6 +23,15 @@ Routes are defined in application/config/routes.json using the following paramet
 - *view* (optional)
   - The view (Twig template) to use if one is needed.
 
+#### View Controllers
+TODO
+
+#### Views
+TODO
+
+#### API / Webservices
+TODO
+
 #### See Also
 - Composer: https://getcomposer.org/doc/
 - Doctrine: http://docs.doctrine-project.org/projects/doctrine-orm/en/latest/
