@@ -8,10 +8,9 @@ By default it includes Doctrine ORM and Twig plus a custom router.
 2. run `#php composer.phar install` or `#php composer.phar update`
 
 #### Configuration
-Edit application/config/config.php as needed. Should be pretty seld explanitory.
+Edit application/config/config.php as needed. Should be pretty self-explanitory.
 
 #### Usage
-*Routing*
 Routes are defined in application/config/routes.php.
 
 Parameters:
