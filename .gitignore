@@ -1,5 +1,4 @@
 composer.phar
 vendor/
-application/cache/*
 .idea
 atlassian-ide-plugin.xml
