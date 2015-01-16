@@ -5,7 +5,8 @@ This is designed to be a very simple framework to quickly get a web site or serv
 
 ### Instalation
 1. Download zip and extract to your document root.
-2. run `#php composer.phar install` or `#php composer.phar update`
+2. Configure a web server alias to point to the application/public directory.
+3. From a terminal cd to application/public and run `#php composer.phar update`
 
 ### Configuration
 Edit application/config/config.php as needed. Should be pretty self-explanitory.
