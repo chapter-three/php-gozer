@@ -1,7 +1,7 @@
 # php-gozer
 ## A simple PHP framework for web sites and web services.
 
-By default it includes Doctrine ORM and Twig plus a custom router.
+This is designed to be a very simple framework to quickly get a web site or service up and running with as little complexity and overhead as possible while still containing common and often used functionality. By default it includes Composer, Doctrine ORM and Twig plus a custom router. Additional specific functionality can be quickly added via composer.
 
 ### Instalation
 1. Download zip and extract to your document root.
@@ -24,13 +24,16 @@ Routes are defined in application/config/routes.json using the following paramet
   - The view (Twig template) to use if one is needed.
 
 #### View Controllers
-TODO
+Controllers classes are kept in application/controllers and must extend the CoreController class. The file containing the controller class must be named the same as the class in order for the routing mechanism to find it. If a view is associated with the controller, Twig will be available through `$this->twig`. The Doctrine EntityManager is available through `$this->getEntityManager()`. Note: Doctrine is lazy loaded so is not loaded or initialized in the controller until `$this->getEntityManager()` is called.
 
 #### Views
-TODO
+Views are html files in application/views. The Twig templating engine is included with this framework by defailt via composer and available in controllers (that extend CoreController) via `$this->twig`.
 
 #### API / Webservices
-TODO
+Api or webservice controllers are also kept in application/controllers and must extend the CoreAPI class. The file containing the api controller class must be named the same as the class in order for the routing mechanism to find it.
+
+#### Models
+Doctrine ORM is used for database access. Entities are stored in application/models by default. See the Doctrine documentation for a list of supported databases and usage. Controllers extending CoreController can access the EntityManager `via $this->getEntityManager()`.
 
 #### See Also
 - Composer: https://getcomposer.org/doc/
