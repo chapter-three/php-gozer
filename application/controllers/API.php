@@ -19,15 +19,11 @@ class API extends CoreAPI
 	 */
 	public function defaultAction() 
 	{
-		echo json_encode(array('success' => true, 'message' => 'You accessed my APIs!'));
-		
-		/*
 		$response = array(
-			'something' => array()
+			'something' => 'else'
 		);
 		
-		echo $this->encodeJson($response);
-		*/
+		echo json_encode($response);
 	}
 
 	/**
