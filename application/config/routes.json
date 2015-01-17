@@ -2,7 +2,7 @@
   {
 	"url": 			"/",
 	"controller": 	"HomePage",
-	"view": 		"home.html"
+	"view": 		"home.twig"
   },
   {
 	"url": 			"/admin",
