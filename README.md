@@ -1,12 +1,19 @@
 # php-gozer
 ## A simple PHP framework for web sites and web services.
 
-This is designed to be a very simple framework to quickly get a web site or service up and running with as little complexity and overhead as possible while still containing common and often used functionality. By default it includes Composer, Doctrine ORM and Twig plus a custom router. The framework can be easily extended for specific needs using Composer.
+The Gozer framework is designed to be a very simple framework to quickly get a web site or service api (or both) up and running with as little complexity and overhead as possible while still maintaing common and often used functionality. By default it includes the following third party libraries and tools:
+- Composer
+- Doctrine ORM
+- Twig
+- OAuth2
+- A custom router and bootstrap.
+
+The framework can be easily extended for specific needs using Composer. The base API controller (CoreAPI) includes an optional OAuth2 mechanism. The goal is to be lightwheight and fast out-of-the box but be easily scaled and extended to suit many needs.
 
 ### Instalation
-1. Download zip and extract to your document root.
-2. Configure a web server alias to point to the application/public directory.
-3. From a terminal cd to application/public and run `#php composer.phar update`
+1. Download zip and extract.
+2. Set document root to /path/to/app/application/public. (.htaccess and bootstrap files are here)
+3. From a terminal cd to /path/to/app/ and run `#php composer.phar update` to install required libraries.
 
 ### Configuration
 Edit application/config/config.php as needed. Should be pretty self-explanatory.
