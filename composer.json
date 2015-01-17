@@ -14,6 +14,7 @@
     },
     "require": {
         "twig/twig": "~1.0",
-        "doctrine/orm": "2.*"
+        "doctrine/orm": "2.*",
+        "bshaffer/oauth2-server-php": "v1.5"
     }
 }

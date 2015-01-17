@@ -12,6 +12,6 @@ define('TWIG_CACHE_DIR', BASE_PATH . '/system/cache/twig');
 // Doctrine
 define('DOCTRINE_ENTITIES_DIR', BASE_PATH . '/application/models');
 define('DOCTRINE_DB_DRIVER', 'pdo_mysql');
-define('DOCTRINE_DB_NAME', '');
-define('DOCTRINE_DB_USER', '');
-define('DOCTRINE_DB_PASSWORD', '');
+define('DOCTRINE_DB_NAME', 'doctrine');
+define('DOCTRINE_DB_USER', 'root');
+define('DOCTRINE_DB_PASSWORD', 'mysqlr00t');
