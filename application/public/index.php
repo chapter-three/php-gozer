@@ -37,13 +37,14 @@ if (is_file(ROUTES_FILE)) {
 		}
 		
 		$params = array();
+		$baseReqUrl = $reqUrl;
 		for ($i = 0; $i <= $paramCount - 1; $i++) {
 			$params[] = substr($reqUrl, strrpos($reqUrl, '/') + 1);
-			$reqUrl = substr($reqUrl, 0, strrpos($reqUrl, '/'));
+			$baseReqUrl = substr($reqUrl, 0, strrpos($reqUrl, '/'));
 		}
 		$params = array_reverse($params);
 		
-		if ($urlPattern == $reqUrl) {
+		if ($urlPattern == $reqUrl || ($paramCount > 0 && $urlPattern == $baseReqUrl)) {
 			if (!empty($page['redirect'])) {
 				header('Location:' . $page['redirect']);
 				exit();
