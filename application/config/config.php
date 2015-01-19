@@ -1,9 +1,15 @@
 <?php
 
 // Gozer
-define('BASE_PATH', str_replace('/application/public', '', $_SERVER['DOCUMENT_ROOT']));
+define('BASE_PATH', dirname(dirname(dirname(__FILE__))));
 define('ROUTES_FILE', BASE_PATH . '/application/config/routes.json');
 define('ENV', 'dev'); // TODO: This is server and install specific and so should be elsewhere.
+
+// API/Webservice and OAuth
+define('API_USE_OAUTH', true);
+define('OAUTH_STORAGE_TYPE', 'pdo');
+define('OAUTH_TOKEN_LIFETIME', 3600);
+define('OAUTH_GRANT_TYPES', serialize(array('client_credentials')));
 
 // Twig
 define('TWIG_TEMPLATE_DIR', BASE_PATH . '/application/views');

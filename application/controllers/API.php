@@ -9,7 +9,8 @@ use Gozer\Core\CoreAPI;
  */
 class API extends CoreAPI 
 {
-	public function __construct() {
+	public function __construct() 
+	{
 		parent::__construct(true);
 	}
 	
@@ -23,13 +24,15 @@ class API extends CoreAPI
 			'something' => 'else'
 		);
 		
+		header('Content-Type:application/json');
 		echo json_encode($response);
 	}
 
 	/**
 	 * Another sample action
 	 */
-	public function testAction($param1, $param2) {
+	public function testAction($param1, $param2) 
+	{
 		$payload = array(
 			'text' => 'this is a test',
 			'params' => array($param1, $param2)

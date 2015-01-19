@@ -1,4 +1,5 @@
 {
+    "name": "jimgitsit/php-gozer",
     "autoload": {
         "psr-4": {
             "Gozer\\Core\\": "system/src"

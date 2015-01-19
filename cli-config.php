@@ -7,18 +7,20 @@ use Doctrine\ORM\Tools\Setup;
 use Doctrine\ORM\Tools\Console\ConsoleRunner;
 
 require_once('vendor/autoload.php');
-require_once('application/config/config.php');
 
-// replace with mechanism to retrieve EntityManager in your app
-$paths = array('application/models');
+$paths = array(
+	DOCTRINE_ENTITIES_DIR, 
+	BASE_PATH . '/system/src/models'
+);
+
 $isDevMode = false;
 
 // the connection configuration
 $dbParams = array(
-	'driver'   => 'pdo_mysql',
-	'user'     => 'root',
-	'password' => 'mysqlr00t',
-	'dbname'   => 'doctrine',
+	'driver'   => DOCTRINE_DB_DRIVER,
+	'user'     => DOCTRINE_DB_USER,
+	'password' => DOCTRINE_DB_PASSWORD,
+	'dbname'   => DOCTRINE_DB_NAME,
 );
 
 $config = Setup::createAnnotationMetadataConfiguration($paths, $isDevMode);
