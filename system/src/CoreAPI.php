@@ -41,12 +41,13 @@ abstract class CoreAPI extends Core
 	 * Only the client_credentials and password grant_types are currently supported.
 	 * Will add support for authorization_code and implicit when needed.
 	 * 
+	 * # Grant types:
 	 * authorization_code (future support)
 	 *      3-legged authentication. See http://bshaffer.github.io/oauth2-server-php-docs/grant-types/authorization-code/
 	 * client_credentials
 	 *      data: client_id and client_secret
 	 * password
-	 *      data: username and password
+	 *      data: client_id, username and password
 	 * implicit (future support)
 	 *      Allows implicit 
 	 */
@@ -127,6 +128,8 @@ abstract class CoreAPI extends Core
 	 * Then the client would post to http(s)://<yourdomain.com>/api/authorize/ 
 	 * with data appropriate for the grant type to get an access_token for use 
 	 * in subsequent calls (defined in your controller).
+	 * 
+	 * @see initOAth2
 	 */
 	public function getOAuth2Token() {
 		// Respond with a new token
