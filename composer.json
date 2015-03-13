@@ -19,26 +19,12 @@
       "app/config/gozer_config.php"
     ]
   },
-  "repositories": [
-    {
-      "type": "package",
-      "package": {
-        "name": "jimgitsit/klogger",
-        "version": "dev-master",
-        "source": {
-          "url": "https://github.com/Jimgitsit/KLogger.git",
-          "type": "git",
-          "reference": "master"
-        }
-      }
-    }
-  ],
   "require": {
     "php": ">=5.4.0",
     "twig/twig": "~1.0",
     "doctrine/orm": "2.*",
     "bshaffer/oauth2-server-php": "v1.5",
     "altorouter/altorouter": "1.1.0",
-    "jimgitsit/klogger": "dev-master"
+    "katzgrau/klogger": "1.0.*"
   }
 }
