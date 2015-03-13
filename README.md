@@ -46,7 +46,7 @@ Copy gozer_config_template.php to <project_root>/app/config/gozer_config.php and
 
 
 #### Views
-The Twig templating engine is included with this framework by default via composer and available in controllers (that extend CoreController) via `$this->twig`. Template are stored in app/views by default.
+The Twig templating engine is included with this framework by default via composer and available in controllers (that extend CoreController) via `$this->twig`. Template files are stored in app/views by default.
 
 #### API / Webservices
 API or webservice controllers should extend the CoreAPI class. If you want to use OAuth2, execute create_oauth_tables.sql on your database to add the required tables.
