@@ -17,6 +17,11 @@ abstract class CoreAPI extends Core
 {
 	protected $oauthServer;
 	private $useOAuth2 = false;
+
+	/**
+	 * @var CoreAPIResponse
+	 */
+	private $responder = null;
 	
 	public function __construct($useOAuth2 = false) {
 		$this->useOAuth2 = $useOAuth2;
@@ -35,6 +40,15 @@ abstract class CoreAPI extends Core
 				}
 			}
 		}
+	}
+	
+	public function setResponder(CoreAPIResponse $responder) {
+		$this->responder = $responder;
+		return $this->responder;
+	}
+	
+	public function respond($data) {
+		$this->responder->respond($data);
 	}
 
 	/**

@@ -16,7 +16,7 @@
       "Gozer\\Core\\": "src"
     },
     "files": [
-      "app/config/gozer_config.php"
+      "../../app/config/gozer_config.php"
     ]
   },
   "require": {
