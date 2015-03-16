@@ -15,20 +15,12 @@ The following composer packages are required by Gozer and are installed with it:
 - KLogger (Jimgitsit fork)
 
 ### Installation
-Composer:
+From the Command Line:
 
-	"repositories": [{
-		"type": "package",
-		"package": {
-		"name": "jimgitsit/klogger",
-		"version": "dev-master",
-		"source": {
-			"url": "https://github.com/Jimgitsit/KLogger.git",
-			"type": "git",
-			"reference": "master"
-			}
-		}
-	}],
+	composer require jimgitsit/klogger:dev-master
+
+In your `composer.json`:
+
 	"require": {
 	  "jimgitsit/klogger": "dev-master"
 	}
