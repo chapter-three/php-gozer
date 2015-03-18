@@ -51,4 +51,6 @@ abstract class Core
 
 		return $this->entityManager;
 	}
+	
+	// TODO: Add initDoctrineMongo function
 }
