@@ -17,6 +17,7 @@ abstract class CoreAPI extends Core
 {
 	protected $oauthServer;
 	private $useOAuth2 = false;
+	private $allowOrigin = '*';
 
 	/**
 	 * @var CoreAPIResponse
@@ -48,7 +49,20 @@ abstract class CoreAPI extends Core
 	}
 	
 	public function respond($data) {
+		header("Access-Control-Allow-Origin: " . $this->allowOrigin);
 		$this->responder->respond($data);
+	}
+	
+	public function respondError($msg, $code = 500) {
+		switch ($code) {
+			case 400:
+				header("HTTP/1.0 400 Bad Request"); break;
+			default:
+			case 500:
+				header("HTTP/1.0 500 Internal Server Error."); break;
+		}
+		header("Access-Control-Allow-Origin: " . $this->allowOrigin);
+		$this->responder->respond(array("error" => true, "error_code" => $code, "error_msg" => $msg));
 	}
 
 	/**
