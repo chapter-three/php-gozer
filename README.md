@@ -17,12 +17,12 @@ The following composer packages are required by Gozer and are installed with it:
 ### Installation
 From the Command Line:
 
-	composer require jimgitsit/klogger:dev-master
+	composer require jimgitsit/php-gozer:dev-master
 
 In your `composer.json`:
 
 	"require": {
-	  "jimgitsit/klogger": "dev-master"
+	  "jimgitsit/php-gozer": "dev-master"
 	}
 
 ### Configuration
