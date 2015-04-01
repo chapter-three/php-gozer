@@ -15,7 +15,7 @@ namespace Gozer\Core;
  */
 abstract class CoreAPI extends Core
 {
-	protected $oauthServer;
+	protected $oauthServer = null;
 	private $useOAuth2 = false;
 	private $allowOrigin = '*';
 
@@ -161,7 +161,12 @@ abstract class CoreAPI extends Core
 	 * @see initOAth2
 	 */
 	public function getOAuth2Token() {
-		// Respond with a new token
-		$this->oauthServer->handleTokenRequest(\OAuth2\Request::createFromGlobals())->send();
+		if ($this->oauthServer === null) {
+			$this->respondError("OAuth2 is not enabled for this web service.");
+		}
+		else {
+			// Respond with a new token
+			$this->oauthServer->handleTokenRequest(\OAuth2\Request::createFromGlobals())->send();
+		}
 	}
 }
