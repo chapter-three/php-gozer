@@ -31,7 +31,7 @@ abstract class CoreAPI extends Core
 			$this->initOAth2();
 			
 			// Don't check for authorization when requesting a token
-			$temp = explode('/', trim($_SERVER['PATH_INFO'], '/'));
+			$temp = explode('/', trim($_SERVER['REQUEST_URI'], '/'));
 			if ($temp[count($temp) - 1] != 'authorize') {
 				// Check for a valid token
 				if (!$this->oauthServer->verifyResourceRequest(\OAuth2\Request::createFromGlobals())) {
@@ -80,6 +80,7 @@ abstract class CoreAPI extends Core
 	 *      Allows implicit 
 	 */
 	private function initOAth2() {
+		// TODO: This needs to allow for other db types such as MongoDB.
 		$storage = new \OAuth2\Storage\Pdo(array(
 			'dsn' => 'mysql:dbname=' . DOCTRINE_DB_NAME . ';host=localhost',
 			'username' => DOCTRINE_DB_USER,
