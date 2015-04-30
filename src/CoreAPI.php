@@ -1,5 +1,4 @@
 <?php
-// Repo test
 
 namespace Gozer\Core;
 
@@ -25,8 +24,8 @@ abstract class CoreAPI extends Core
 	 */
 	private $responder = null;
 	
-	public function __construct($useOAuth2 = false) {
-		$this->useOAuth2 = $useOAuth2;
+	public function __construct() {
+		$this->useOAuth2 = API_USE_OAUTH;
 		
 		if ($this->useOAuth2) {
 			$this->initOAth2();
@@ -83,9 +82,9 @@ abstract class CoreAPI extends Core
 	private function initOAth2() {
 		// TODO: This needs to allow for other db types such as MongoDB.
 		$storage = new \OAuth2\Storage\Pdo(array(
-			'dsn' => 'mysql:dbname=' . DOCTRINE_DB_NAME . ';host=localhost',
-			'username' => DOCTRINE_DB_USER,
-			'password' => DOCTRINE_DB_PASSWORD
+			'dsn' => 'mysql:dbname=' . OUATH_DB_NAME . ';host=' . OAUTH_DB_HOST,
+			'username' => OAUTH_DB_USER,
+			'password' => OAUTH_DB_PASSWORD
 		));
 
 		//$storage->checkRestrictedGrantType()
