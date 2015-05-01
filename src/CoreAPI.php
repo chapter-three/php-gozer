@@ -6,7 +6,8 @@ namespace Gozer\Core;
  * Base class for all api controllers.
  * 
  * Has built in OAuth2 authentication via the bshaffer/oauth2-server-php library. 
- * Pass true to the constructor to enable OAuth2.
+ * 
+ * Set API_USE_OAUTH to true in the site config file to enable OAuth2.
  * 
  * TODO: Add JWT Bearer support. See http://bshaffer.github.io/oauth2-server-php-docs/grant-types/jwt-bearer/
  * 
@@ -82,7 +83,7 @@ abstract class CoreAPI extends Core
 	private function initOAth2() {
 		// TODO: This needs to allow for other db types such as MongoDB.
 		$storage = new \OAuth2\Storage\Pdo(array(
-			'dsn' => 'mysql:dbname=' . OUATH_DB_NAME . ';host=' . OAUTH_DB_HOST,
+			'dsn' => 'mysql:dbname=' . OAUTH_DB_NAME . ';host=' . OAUTH_DB_HOST,
 			'username' => OAUTH_DB_USER,
 			'password' => OAUTH_DB_PASSWORD
 		));
@@ -107,6 +108,8 @@ abstract class CoreAPI extends Core
 			$options['always_issue_new_refresh_token'] = true;
 			$options['refresh_token_lifetime'] = OAUTH_REFRESH_TOKEN_LIFETIME;
 		}
+		
+		$options['access_lifetime'] = OAUTH_TOKEN_LIFETIME;
 
 		$grants = array();
 		
