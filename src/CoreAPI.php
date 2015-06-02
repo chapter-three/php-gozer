@@ -31,9 +31,11 @@ abstract class CoreAPI extends Core
 		if ($this->useOAuth2) {
 			$this->initOAth2();
 			
-			// Don't check for authorization when requesting a token
+			// Don't check for authorization when requesting a token or docs
 			$temp = explode('/', trim($_SERVER['REQUEST_URI'], '/'));
-			if ($temp[count($temp) - 1] != 'authorize') {
+			$lastPath = str_replace($_SERVER['QUERY_STRING'], '', $temp[count($temp) - 1]);
+			$lastPath = str_replace('?', '', $lastPath);
+			if ($lastPath != 'authorize' && $lastPath != 'docs') {
 				// Check for a valid token
 				if (!$this->oauthServer->verifyResourceRequest(\OAuth2\Request::createFromGlobals())) {
 					// Not authorized!
@@ -44,17 +46,17 @@ abstract class CoreAPI extends Core
 		}
 	}
 	
-	public function setResponder(CoreAPIResponse $responder) {
+	protected function setResponder(CoreAPIResponse $responder) {
 		$this->responder = $responder;
 		return $this->responder;
 	}
 	
-	public function respond($data) {
+	protected function respond($data) {
 		header("Access-Control-Allow-Origin: " . $this->allowOrigin);
 		$this->responder->respond($data);
 	}
-	
-	public function respondError($msg, $code = 500) {
+
+	protected function respondError($msg, $code = 500) {
 		switch ($code) {
 			case 400:
 				header("HTTP/1.0 400 Bad Request"); break;
@@ -80,7 +82,7 @@ abstract class CoreAPI extends Core
 	 * implicit (future support)
 	 *      Allows implicit 
 	 */
-	private function initOAth2() {
+	protected function initOAth2() {
 		// TODO: This needs to allow for other db types such as MongoDB.
 		$storage = new \OAuth2\Storage\Pdo(array(
 			'dsn' => 'mysql:dbname=' . OAUTH_DB_NAME . ';host=' . OAUTH_DB_HOST,

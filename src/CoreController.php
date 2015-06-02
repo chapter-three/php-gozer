@@ -15,25 +15,21 @@ use \Twig_Environment;
  */
 abstract class CoreController extends Core
 {
+	/**
+	 * @var Twig_Environment $twig
+	 */
 	protected $twig;
-	protected $template;
 	protected $get;
 	protected $post;
 	
 	/**
 	 * Constructor
 	 * 
-	 * @var $template string
-	 *          The name of the template file for this controller (optional).
+	 * @var $useTwig Boolean
+	 *          Set to true if you want to use a twig tempalte.
 	 */
-	public function __construct($template = null)
+	public function __construct()
 	{
-		$this->template = $template;
-		
-		if ($this->template != null) {
-			$this->initTwig();
-		}
-		
 		$this->get = $this->sanitizeValues($_GET);
 		$this->post = $this->sanitizeValues($_POST);
 	}
@@ -41,7 +37,7 @@ abstract class CoreController extends Core
 	/**
 	 * Helper function for initializing Twig.
 	 */
-	private function initTwig() {
+	protected function initTwig() {
 		$twigConfig = array(
 			'cache' => TWIG_CACHE_DIR
 		);
