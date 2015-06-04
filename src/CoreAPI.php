@@ -25,7 +25,7 @@ abstract class CoreAPI extends Core
 	 */
 	private $responder = null;
 	
-	public function __construct() {
+	public function __construct($bypassAuth = false) {
 		$this->useOAuth2 = API_USE_OAUTH;
 		
 		if ($this->useOAuth2) {
@@ -35,7 +35,7 @@ abstract class CoreAPI extends Core
 			$temp = explode('/', trim($_SERVER['REQUEST_URI'], '/'));
 			$lastPath = str_replace($_SERVER['QUERY_STRING'], '', $temp[count($temp) - 1]);
 			$lastPath = str_replace('?', '', $lastPath);
-			if ($lastPath != 'authorize' && $lastPath != 'docs') {
+			if ($bypassAuth == false && $lastPath != 'authorize' && $lastPath != 'docs') {
 				// Check for a valid token
 				if (!$this->oauthServer->verifyResourceRequest(\OAuth2\Request::createFromGlobals())) {
 					// Not authorized!
