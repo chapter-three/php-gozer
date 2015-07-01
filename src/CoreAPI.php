@@ -16,6 +16,9 @@ namespace Gozer\Core;
  */
 abstract class CoreAPI extends Core
 {
+	/**
+	 * @var \OAuth2\Server
+	 */
 	protected $oauthServer = null;
 	private $useOAuth2 = false;
 	private $allowOrigin = '*';
@@ -25,7 +28,7 @@ abstract class CoreAPI extends Core
 	 */
 	private $responder = null;
 	
-	public function __construct($bypassAuth = false) {
+	public function __construct($bypassPaths = array(), $bypassAuth = false) {
 		$this->useOAuth2 = API_USE_OAUTH;
 		
 		if ($this->useOAuth2) {
@@ -36,11 +39,20 @@ abstract class CoreAPI extends Core
 			$lastPath = str_replace($_SERVER['QUERY_STRING'], '', $temp[count($temp) - 1]);
 			$lastPath = str_replace('?', '', $lastPath);
 			if ($bypassAuth == false && $lastPath != 'authorize' && $lastPath != 'docs') {
-				// Check for a valid token
-				if (!$this->oauthServer->verifyResourceRequest(\OAuth2\Request::createFromGlobals())) {
-					// Not authorized!
-					$this->oauthServer->getResponse()->send();
-					die;
+				$continue = true;
+				foreach ($bypassPaths as $path) {
+					if ($lastPath == $path) {
+						$continue = false;
+					}
+				}
+				
+				if ($continue) {
+					// Check for a valid token
+					if (!$this->oauthServer->verifyResourceRequest(\OAuth2\Request::createFromGlobals())) {
+						// Not authorized!
+						$this->oauthServer->getResponse()->send();
+						die;
+					}
 				}
 			}
 		}
@@ -60,6 +72,10 @@ abstract class CoreAPI extends Core
 		switch ($code) {
 			case 400:
 				header("HTTP/1.0 400 Bad Request"); break;
+				break;
+			case 401:
+				header("HTTP/1.0 401 Unauthorized"); break;
+				break;
 			default:
 			case 500:
 				header("HTTP/1.0 500 Internal Server Error."); break;
