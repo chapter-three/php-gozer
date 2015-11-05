@@ -190,4 +190,23 @@ abstract class CoreAPI extends Core
 			$this->oauthServer->handleTokenRequest(\OAuth2\Request::createFromGlobals())->send();
 		}
 	}
+
+	/**
+	 * Returns the client id associated with the access token.
+	 * If the token is expired null will be returned.
+	 * 
+	 * @param $token
+	 */
+	protected function getClientIdFromAccessToken($token) {
+		$db = new \mysqli(OAUTH_DB_HOST, OAUTH_DB_USER, OAUTH_DB_PASSWORD, OAUTH_DB_NAME);
+		$result = $db->query("SELECT client_id from oauth_access_tokens where access_token='$token'");
+		
+		if ($result !== false && $result->num_rows > 0) {
+			$row = $result->fetch_assoc();
+			return $row['client_id'];
+		}
+		else {
+			$this->respondError('Invalid access token.', 401);
+		}
+	}
 }

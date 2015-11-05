@@ -42,7 +42,7 @@ abstract class Core
 	 * Returns the Doctrine EntityManager object.
 	 * Initializes the EntityManager if it is not already initialized.
 	 *
-	 * @return mixed
+	 * @return EntityManager
 	 */
 	protected function getEntityManager() {
 		if ($this->entityManager == null) {
