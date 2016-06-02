@@ -10,6 +10,9 @@ use Doctrine\ORM\EntityManager;
  */
 abstract class Core
 {
+	/**
+	 * @var EntityManager
+	 */
 	private $entityManager;
 
 	/**
@@ -50,6 +53,15 @@ abstract class Core
 		}
 
 		return $this->entityManager;
+	}
+	
+	protected function resetEntityManager() {
+		if (!$this->entityManager->isOpen()) {
+			$this->entityManager = $this->entityManager->create(
+				$this->entityManager->getConnection(),
+				$this->entityManager->getConfiguration()
+			);
+		}
 	}
 	
 	// TODO: Add initDoctrineMongo function
