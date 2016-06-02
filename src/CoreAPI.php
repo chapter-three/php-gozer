@@ -180,6 +180,7 @@ abstract class CoreAPI extends Core
 	 * in subsequent calls (defined in your controller).
 	 * 
 	 * @see initOAth2
+	 * @documen nodoc
 	 */
 	public function getOAuth2Token() {
 		if ($this->oauthServer === null) {
