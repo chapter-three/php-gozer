@@ -41,7 +41,8 @@ abstract class CoreController extends Core
 		$twigConfig = array(
 			'cache' => TWIG_CACHE_DIR
 		);
-		if (ENV == 'dev') {
+		
+		if ((defined('USE_TWIG_CACHE') && USE_TWIG_CACHE == false) || (ENV != 'prod')) {
 			$twigConfig['auto_reload'] = true;
 		}
 
