@@ -65,6 +65,9 @@ abstract class CoreAPI extends Core
 	
 	protected function respond($data) {
 		header("Access-Control-Allow-Origin: " . $this->allowOrigin);
+		header("Cache-Control: no-store, no-cache, must-revalidate, max-age=0");
+		header("Cache-Control: post-check=0, pre-check=0", false);
+		header("Pragma: no-cache");
 		$this->responder->respond($data);
 	}
 
@@ -81,6 +84,9 @@ abstract class CoreAPI extends Core
 				header("HTTP/1.0 500 Internal Server Error."); break;
 		}
 		header("Access-Control-Allow-Origin: " . $this->allowOrigin);
+		header("Cache-Control: no-store, no-cache, must-revalidate, max-age=0");
+		header("Cache-Control: post-check=0, pre-check=0", false);
+		header("Pragma: no-cache");
 		$this->responder->respond(array("error" => true, "error_code" => $code, "error_msg" => $msg));
 	}
 
