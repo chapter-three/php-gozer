@@ -9,4 +9,12 @@ interface CoreAPIResponse {
 	 * @return mixed
 	 */
 	public function respond($data);
+	
+	/**
+	 * @param $msg
+	 * @param $code
+	 *
+	 * @return mixed
+	 */
+	public function respondError($msg, $code = 500);
 }

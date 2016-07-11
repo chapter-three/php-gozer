@@ -21,7 +21,6 @@ abstract class CoreAPI extends Core
 	 */
 	protected $oauthServer = null;
 	private $useOAuth2 = false;
-	private $allowOrigin = '*';
 
 	/**
 	 * @var CoreAPIResponse
@@ -29,6 +28,7 @@ abstract class CoreAPI extends Core
 	private $responder = null;
 	
 	public function __construct($bypassPaths = array(), $bypassAuth = false) {
+		
 		$this->useOAuth2 = API_USE_OAUTH;
 		
 		if ($this->useOAuth2) {
@@ -64,30 +64,11 @@ abstract class CoreAPI extends Core
 	}
 	
 	protected function respond($data) {
-		header("Access-Control-Allow-Origin: " . $this->allowOrigin);
-		header("Cache-Control: no-store, no-cache, must-revalidate, max-age=0");
-		header("Cache-Control: post-check=0, pre-check=0", false);
-		header("Pragma: no-cache");
-		$this->responder->respond($data);
+		return $this->responder->respond($data);
 	}
 
 	protected function respondError($msg, $code = 500) {
-		switch ($code) {
-			case 400:
-				header("HTTP/1.0 400 Bad Request"); break;
-				break;
-			case 401:
-				header("HTTP/1.0 401 Unauthorized"); break;
-				break;
-			default:
-			case 500:
-				header("HTTP/1.0 500 Internal Server Error."); break;
-		}
-		header("Access-Control-Allow-Origin: " . $this->allowOrigin);
-		header("Cache-Control: no-store, no-cache, must-revalidate, max-age=0");
-		header("Cache-Control: post-check=0, pre-check=0", false);
-		header("Pragma: no-cache");
-		$this->responder->respond(array("error" => true, "error_code" => $code, "error_msg" => $msg));
+		return $this->responder->respondError($msg, $code);
 	}
 
 	/**
