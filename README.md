@@ -26,7 +26,7 @@ From the Command Line:
 In your `composer.json`:
 
 	"require": {
-	  "jimgitsit/php-gozer": "dev-master"
+	  "jimgitsit/php-gozer": "2.0.*@dev",
 	}
 
 ### Configuration
