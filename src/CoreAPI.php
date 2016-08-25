@@ -27,6 +27,14 @@ abstract class CoreAPI extends Core
 	 */
 	private $responder = null;
 	
+	/**
+	 * CoreAPI constructor.
+	 * 
+	 * Initializes OAuth2 if API_USE_OAUTH = true.
+	 *
+	 * @param array $bypassPaths
+	 * @param bool $bypassAuth
+	 */
 	public function __construct($bypassPaths = array(), $bypassAuth = false) {
 		
 		$this->useOAuth2 = API_USE_OAUTH;
@@ -58,17 +66,80 @@ abstract class CoreAPI extends Core
 		}
 	}
 	
+	/**
+	 * Sets the API responder.
+	 * 
+	 * @param CoreAPIResponse $responder
+	 *
+	 * @return CoreAPIResponse
+	 */
 	protected function setResponder(CoreAPIResponse $responder) {
 		$this->responder = $responder;
 		return $this->responder;
 	}
 	
+	/**
+	 * Responds with data according the API responder.
+	 * 
+	 * @param $data
+	 *
+	 * @return mixed
+	 */
 	protected function respond($data) {
 		return $this->responder->respond($data);
 	}
-
+	
+	/**
+	 * Responds with the error message and code according the API responder.
+	 * 
+	 * @param $msg
+	 * @param int $code
+	 *
+	 * @return mixed
+	 */
 	protected function respondError($msg, $code = 500) {
 		return $this->responder->respondError($msg, $code);
+	}
+	
+	/**
+	 * Helper function to get data from a POST either from the $_POST global 
+	 * or from php://input.
+	 *
+	 * @return array|null
+	 * @documen nodoc
+	 */
+	public function getPostDataJSON() {
+		$data = null;
+		
+		// Get from the POST global first
+		if (empty($_POST)) {
+			// For API calls we need to look at php://input
+			if (!empty(file_get_contents('php://input'))) {
+				$data = @json_decode(file_get_contents('php://input'), true);
+				if ($data === false || $data === null) {
+					return null;
+				}
+			}
+			else {
+				// No data was passed
+				$data = array();
+			}
+		}
+		else {
+			$data = $_POST;
+		}
+		
+		// Normalize boolean values
+		foreach ($data as $name => &$value) {
+			if ($value === 'true') {
+				$value = true;
+			}
+			else if ($value === 'false') {
+				$value = false;
+			}
+		}
+		
+		return $data;
 	}
 
 	/**
