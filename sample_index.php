@@ -24,19 +24,35 @@ try {
 	$yaml = new Parser();
 	$routes = $yaml->parse(file_get_contents(ROUTES_FILE));
 	foreach ($routes as $name => $route) {
-		$router->map($route['method'], $route['route'], array('c' => $route['controller'], 'a' => $route['action']), $name);
+		if (isset($route['view'])) {
+			// Simple route
+			$router->map($route['method'], $route['route'], $route['view'], $name);
+		}
+		else {
+			// Controller/Action route
+			$router->map($route['method'], $route['route'], array('c' => $route['controller'], 'a' => $route['action']), $name);
+		}
 	}
 	
 	// Match current request
 	$match = $router->match();
-	$test = class_exists($match['target']['c']);
-	if ($match && method_exists($match['target']['c'], $match['target']['a'])) {
-		$controller = new $match['target']['c'];
-		call_user_func_array(array($controller, $match['target']['a']), $match['params']);
+	
+	if (isset($match['target']['c'])) {
+		$test = class_exists($match['target']['c']);
+		if ($match && method_exists($match['target']['c'], $match['target']['a'])) {
+			$controller = new $match['target']['c'];
+			call_user_func_array(array($controller, $match['target']['a']), $match['params']);
+		}
+		else {
+			// No route was matched
+			header($_SERVER["SERVER_PROTOCOL"] . ' 404 Not Found');
+		}
 	}
 	else {
-		// No route was matched
-		header($_SERVER["SERVER_PROTOCOL"] . ' 404 Not Found');
+		// Simple route
+		if (file_exists(BASE_PATH . $match['target'])) {
+			echo(file_get_contents(BASE_PATH . $match['target']));
+		}
 	}
 }
 catch(Exception $e) {
