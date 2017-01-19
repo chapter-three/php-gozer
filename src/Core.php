@@ -35,6 +35,7 @@ abstract class Core
 			'user'     => DOCTRINE_DB_USER,
 			'password' => DOCTRINE_DB_PASSWORD,
 			'dbname'   => DOCTRINE_DB_NAME,
+			'host'     => DOCTRINE_DB_HOST,
 		);
 
 		$config = Setup::createAnnotationMetadataConfiguration($paths, $isDevMode);

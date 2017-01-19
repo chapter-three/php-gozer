@@ -12,6 +12,7 @@ define('DOCTRINE_DB_DRIVER', 'pdo_mysql');
 define('DOCTRINE_DB_USER', '');
 define('DOCTRINE_DB_PASSWORD', '');
 define('DOCTRINE_DB_NAME', '');
+define('DOCTRINE_DB_HOST', '');
 
 /*** OAuth2 ***/
 define('API_USE_OAUTH', true);
