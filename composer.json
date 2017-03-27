@@ -19,12 +19,18 @@
       "../../../app/config/gozer_config.php"
     ]
   },
+  "repositories": [
+    {
+      "type": "vcs",
+      "url": "https://github.com/chapter-three/KLogger.git"
+    }
+  ]
   "require": {
     "php": ">=5.4.0",
     "twig/twig": "~1.0",
     "doctrine/orm": "2.*",
     "bshaffer/oauth2-server-php": "v1.5",
     "altorouter/altorouter": "1.1.0",
-    "katzgrau/klogger": "1.0.*"
+    "katzgrau/klogger": "dev-fmportaldev02"
   }
 }
